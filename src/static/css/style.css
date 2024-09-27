@@ -1,0 +1,202 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+body {
+    background: url('../images/mint-background.jpeg') repeat center center fixed;
+    background-size: auto;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar-brand span {
+    color: #6dbfa0;
+}
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #333 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #6dbfa0 !important;
+}
+
+.btn-mint {
+    background-color: #6dbfa0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-mint:hover {
+    background-color: #83cbb5;
+}
+
+.auth-nav a {
+    text-decoration: none;
+    color: white;
+    background-color: #6dbfa0;
+    padding: 8px 16px;
+    border-radius: 25px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-nav a:hover {
+    background-color: #83cbb5;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    color: #6dbfa0;
+}
+
+.footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+#productCarousel {
+    max-width: 600px;
+    max-height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumb {
+    width: 100%;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.thumb:hover {
+    opacity: 1;
+}
+
+
+/* Banner Styles */
+.banner {
+    background: url('../images/banner1.jpg') repeat center center fixed;
+    background-size: auto;
+    padding: 60px 20px;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.features i {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.features h4 {
+    margin-bottom: 10px;
+}
+
+.why-choose-us {
+    padding: 40px 20px;
+}
+
+.why-choose-us h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.why-choose-us p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* About Section */
+.about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="banner text-center mb-5">
+    <div class="banner-content">
+        <h1 class="display-4">Welcome to Mini Mart</h1>
+        <p>Your one-stop shop for the best deals!</p>
+        <a href="{{ url_for('main.product_list') }}" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+</section>
+
+<section class="features mb-5 text-center">
+    <div class="row">
+        <div class="col-md-4">
+            <i class="bi bi-truck" style="font-size: 2rem;"></i>
+            <h4>Free Shipping</h4>
+            <p>Enjoy free shipping on all orders, no minimum purchase required.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="bi bi-gift" style="font-size: 2rem;"></i>
+            <h4>Give a Gift to a Friend</h4>
+            <p>Spread the joy by sending gifts to your loved ones with ease.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="bi bi-heart" style="font-size: 2rem;"></i>
+            <h4>Loved by Our Customers</h4>
+            <p>Thousands of satisfied customers trust us with their shopping needs.</p>
+        </div>
+    </div>
+</section>
+
+<section class="product-cards mb-5">
+    <div class="container mt-4">
+        <h1>Products</h1>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ product.main_image }}" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">${{ product.price }}</p>
+                        <a href="{{ url_for('main.product_detail', id=product.id) }}" class="btn btn-primary">View
+                            Details</a>
+                        <a href="{{ url_for('main.add_to_cart', id=product.id) }}" class="btn btn-success">Add to
+                            Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="why-choose-us mb-5 text-center">
+    <h2>Why Choose Us?</h2>
+    <p>At Mini Mart, we offer exceptional value for money, top-quality products, and a seamless shopping experience.</p>
+</section>
+{% endblock %}

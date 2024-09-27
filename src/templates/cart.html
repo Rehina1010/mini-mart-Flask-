@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Your Cart</h1>
+    <p class="lead">Items: {{ cart_items_count }}</p>
+
+    {% if cart_items_count > 0 %}
+    <div class="row">
+        {% for item_id in cart_items %}
+        {% set product = products[item_id] %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ product.main_image }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">Price: ${{ product.price }}</p>
+                    <form action="{{ url_for('main.remove_from_cart', id=item_id) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Remove from Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-4">
+        <h3>Checkout</h3>
+        <button id="checkout-button" class="btn btn-primary mt-3">Checkout</button>
+        <div id="payment-result"></div>
+    </div>
+
+    <a href="{{ url_for('main.product_list') }}" class="btn btn-secondary mt-4">Continue Shopping</a>
+    {% else %}
+    <p>Your cart is empty. <a href="{{ url_for('main.product_list') }}">Start shopping now</a>.</p>
+    {% endif %}
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+    var stripe = Stripe('{{ config["STRIPE_PUBLIC_KEY"] }}');
+
+    document.getElementById('checkout-button').addEventListener('click', function () {
+    fetch('/create-checkout-session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(function (response) {
+        if (response.status === 401) {
+            document.getElementById('payment-result').textContent = 'You must be authorized to checkout!';
+            return;
+        }
+        return response.json();
+    }).then(function (sessionIdResponse) {
+        if (sessionIdResponse && sessionIdResponse.sessionId) {
+            return stripe.redirectToCheckout({ sessionId: sessionIdResponse.sessionId });
+        }
+    }).catch(function (error) {
+        document.getElementById('payment-result').textContent = 'Error while creating session!';
+    });
+});
+</script>
+{% endblock %}
