@@ -19,7 +19,7 @@ app.config['SECURITY_PASSWORD_SALT'] = os.urandom(16).hex()
 app.config['STRIPE_PUBLIC_KEY'] = os.getenv('STRIPE_PUBLIC_KEY')
 app.config['STRIPE_SECRET_KEY'] = os.getenv('STRIPE_SECRET_KEY')
 
-app.config['BASE_URL'] = os.getenv('BASE_URL', 'http://127.0.0.1:5000')
+app.config['BASE_URL'] = os.getenv('BASE_URL')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{os.getenv('DATABASE_USER')}:{os.getenv('DATABASE_PASSWORD')}@{os.getenv('DATABASE_HOST')}:{os.getenv('DATABASE_PORT')}/{os.getenv('DATABASE_NAME')}"
 
